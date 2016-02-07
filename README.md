@@ -10,6 +10,8 @@ The main endpoints are:
 **/v1/companies**
 **/v1/companies/{companyId}/beneficial_owners**
 
+## Usage
+
 To run the application please use the following command line:
 `mvn spring-boot:run` 
 
@@ -149,3 +151,6 @@ Returns the following JSON object:
     }
 }
 ```
+## JavaScript Client
+All the CURL operations can also be performed from the JS Client:
+**http://localhost:4950**

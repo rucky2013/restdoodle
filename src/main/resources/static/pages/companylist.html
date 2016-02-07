@@ -1,0 +1,15 @@
+<h3>List of companies:</h3>
+
+<div ng-controller="CompaniesCtrl">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>Company Id</th>
+            <th> Company Name</th>
+        </tr>
+        <tr ng-repeat="(key, value) in resp.companies">
+            <td>{{value.companyId}}</td>
+            <td>{{value.name}}</td>
+        </tr>
+    </table>
+    <small>Debugging info: HttpStatus: <mark>{{resp.httpStatus}}</mark>, Message: <mark>{{resp.message}}</mark></small>
+</div>

@@ -24,7 +24,7 @@ import java.util.UUID;
  * @author Julien Frisquet
  */
 @RestController
-@RequestMapping(value= CompanyController.BASE_URL, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value= CompanyController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CompanyController {
 
     protected static final String BASE_URL = "/v1/companies";
