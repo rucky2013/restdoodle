@@ -153,4 +153,4 @@ Returns the following JSON object:
 ```
 ## JavaScript Client
 All the CURL operations can also be performed from the JS Client:
-**http://localhost:4950**
+http://localhost:4950/
