@@ -1,7 +1,5 @@
 package com.thaelvyn.doodle.restdoodle.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thaelvyn.doodle.restdoodle.assembler.BeneficialOwnerAssemblerImpl;
 import com.thaelvyn.doodle.restdoodle.dto.BeneficialOwnerResponse;
 import com.thaelvyn.doodle.restdoodle.model.BeneficialOwner;
@@ -44,7 +42,6 @@ public class BeneficialOwnerServiceTest {
         beneficialOwnerEntity.setBeneficialOwnerId(BENEFICIAL_OWNER_ID);
     }
 
-
     @Test
     public void testCreateBeneficialOwnerReturnsOk() {
         Mockito.when(repository.save(Mockito.any(BeneficialOwnerEntity.class))).thenReturn(beneficialOwnerEntity);
@@ -54,12 +51,5 @@ public class BeneficialOwnerServiceTest {
         Assert.assertEquals("HttpStatus mismatch", HttpStatus.CREATED.value(), response.getHttpStatus().longValue());
         Assert.assertEquals("Message mismatch", HttpStatus.CREATED.getReasonPhrase(), response.getMessage());
         Assert.assertNotNull("The beneficial owner id was not added", response.getBeneficialOwner().getBeneficialOwnerId());
-    }
-
-
-    @Test
-    public void rand() throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        System.out.println(mapper.writeValueAsString(beneficialOwner));
     }
 }
