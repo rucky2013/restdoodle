@@ -1,0 +1,5 @@
+{
+  "name": "Rest Doodle",
+  "description": "Playing with REST APIs in Spring boot, AngularJs, Heroku and Docker",
+  "image": "heroku/java"
+}
