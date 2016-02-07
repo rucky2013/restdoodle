@@ -21,7 +21,7 @@ curl -i -X GET -H "Content-Type: application/json" "http://localhost:4950/v1/com
 ```
 
 Returns the following JSON object:
-```
+```json
 {
     "httpStatus":200,
     "message":"OK",
@@ -40,7 +40,7 @@ curl -i -X POST -H "Content-Type: application/json" -d '{"name":"A Name","addres
 ```
 
 Returns the following JSON object:
-```
+```json
 {
     "httpStatus":201,
     "message":"Created",
@@ -73,7 +73,7 @@ curl -i -X GET -H "Content-Type: application/json" "http://localhost:4950/v1/com
 ```
 
 Returns the following JSON object:
-```
+```json
 {
     "httpStatus":200,
     "message":"OK",
@@ -106,7 +106,7 @@ curl -i -X PUT -H "Content-Type: application/json" -d '{"name":"OTHER Name","add
 ```
 
 Returns the following JSON object:
-```
+```json
 {
     "httpStatus":200,
     "message":"OK",
@@ -139,7 +139,7 @@ curl -i -X POST -H "Content-Type: application/json" -d '{"firstName":"Bob","last
 ```
 
 Returns the following JSON object:
-```
+```json
 {
     "httpStatus":201,
     "message":"Created",
