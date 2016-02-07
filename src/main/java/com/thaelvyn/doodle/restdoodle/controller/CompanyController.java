@@ -47,7 +47,7 @@ public class CompanyController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public CompanyResponse createCompany(@Valid @RequestBody final Company company)  {
+    public CompanyResponse createCompany(@Valid @RequestBody final Company company) {
 
         return companyService.createCompany(company);
     }
