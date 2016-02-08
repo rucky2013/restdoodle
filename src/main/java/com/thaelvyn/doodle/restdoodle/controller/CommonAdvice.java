@@ -21,19 +21,19 @@ public class CommonAdvice {
     @ExceptionHandler(value = CompanyNotFoundException.class)
     public ResponseEntity<Response> handleCompanyNotFound (final CompanyNotFoundException e) {
         logger.warn("Resource not found: {}", e.getMessage());
-        return new ResponseEntity<>(new Response(HttpStatus.NOT_FOUND.value(), e.getMessage()), HttpStatus.OK);
+        return new ResponseEntity<>(new Response(HttpStatus.NOT_FOUND.value(), e.getMessage()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Response> handleArgumentMismatch(final MethodArgumentTypeMismatchException e) {
         logger.warn("Invalid Argument: {}", e.getMessage());
-        return new ResponseEntity<>(new Response(HttpStatus.BAD_REQUEST.value(), e.getMessage()), HttpStatus.OK);
+        return new ResponseEntity<>(new Response(HttpStatus.BAD_REQUEST.value(), e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<Response> defaultExceptionHandler(final Exception e) {
         logger.warn("Invalid Argument: {}", e.getMessage());
-        return new ResponseEntity<>(new Response(HttpStatus.BAD_REQUEST.value(), e.getMessage()), HttpStatus.OK);
+        return new ResponseEntity<>(new Response(HttpStatus.BAD_REQUEST.value(), e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 
 
