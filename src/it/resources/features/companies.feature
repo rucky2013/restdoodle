@@ -13,10 +13,6 @@ Feature: Company API
     Then a 200 response is returned
     And the details of a company are returned
 
-  Scenario: Attempting to retrieve non existent company details fails
-    When a request to retrieve the detail of a company is sent
-    Then a 400 error response is returned
-
   Scenario: A company can be created
     Given a valid company creation request
     When the creation request is sent
@@ -33,3 +29,17 @@ Feature: Company API
     And a company created
     When the beneficial owner addition request is sent
     Then a 201 response is returned
+
+  Scenario: a baldy formatted create request is handled properly
+    Given an invalid company creation request
+    When the creation request is sent
+    Then a 400 response is returned
+
+  Scenario: a baldy formatted update request is handled properly
+    Given an invalid company update request
+    When the creation request is sent
+    Then a 400 response is returned
+
+  Scenario: Attempting to retrieve non existent company details fails
+    When a request to retrieve the detail of a company is sent
+    Then a 400 response is returned
