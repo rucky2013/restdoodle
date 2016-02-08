@@ -59,6 +59,8 @@ app.service('companyService', function() {
 app.controller('CompaniesCtrl', function($scope, Companies) {
     Companies.query(function(data) {
         $scope.resp = data;
+    }, function(error) {
+        $scope.resp = error.data;
     });
 });
 
@@ -71,8 +73,10 @@ app.controller('CompanyDetailCtrl', ['$scope', 'companyDetailService', 'Companie
 
 app.controller('CompanyDetailResultCtrl', ['$scope', 'companyDetailService', 'Companies', function($scope, companyDetailService, Companies) {
     $scope.companyId = companyDetailService.companyId;
-    Companies.get({companyId : $scope.companyId}, function(companyId){
-        $scope.data = companyId;
+    Companies.get({companyId : $scope.companyId}, function(data){
+        $scope.data = data;
+    }, function(error){
+        $scope.data = error.data;
     });
 }]);
 
@@ -93,6 +97,8 @@ app.controller('CompanyCreateUpdateCtrl', ['$scope', 'companyService', 'Companie
                 companyService.update = true;
                 companyService.companyId = $scope.companyId;
             }
+        }, function(error) {
+            $scope.data = error.data;
         });
     };
 
@@ -112,10 +118,14 @@ app.controller('OperationResultCtrl', ['$scope', 'companyService', 'Companies', 
     if (!companyService.update) {
         Companies.save(angular.toJson(companyService.company), function (data) {
             $scope.data = data;
+        }, function(error){
+            $scope.data = error.data;
         })
     } else {
         Companies.update({companyId : companyService.companyId}, angular.toJson(companyService.company), function (data) {
             $scope.data = data;
+        }, function(error){
+            $scope.data = error.data;
         })
     }
     // reset the service
