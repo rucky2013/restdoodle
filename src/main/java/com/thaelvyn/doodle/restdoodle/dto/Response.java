@@ -10,6 +10,9 @@ public class Response {
     private Integer httpStatus;
     private String message;
 
+    protected Response() {
+    }
+
     public Response(final Integer httpStatus, final String message) {
         this.httpStatus = httpStatus;
         this.message = message;

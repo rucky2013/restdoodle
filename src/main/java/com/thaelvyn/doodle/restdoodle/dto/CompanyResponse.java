@@ -10,6 +10,9 @@ public class CompanyResponse extends Response {
 
     private Company company;
 
+    protected CompanyResponse() {
+    }
+
     public CompanyResponse(final Integer httpStatus, final String message, final Company company) {
         super(httpStatus, message);
         this.company = company;

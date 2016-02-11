@@ -27,7 +27,7 @@ import java.util.UUID;
 @RequestMapping(value= CompanyController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class CompanyController {
 
-    protected static final String BASE_URL = "/v1/companies";
+    public static final String BASE_URL = "/v1/companies";
 
     private final CompanyService companyService;
     private final BeneficialOwnerService beneficialOwnerService;

@@ -12,6 +12,9 @@ public class CompaniesResponse extends Response {
 
     private List<BaseCompany> companies;
 
+    protected CompaniesResponse() {
+    }
+
     public CompaniesResponse(final Integer httpStatus, final String message, final List<BaseCompany> companies) {
         super(httpStatus, message);
         this.companies = companies;
