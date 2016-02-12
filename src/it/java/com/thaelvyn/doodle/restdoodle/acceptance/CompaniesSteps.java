@@ -5,7 +5,6 @@ import com.thaelvyn.doodle.restdoodle.controller.CompanyController;
 import com.thaelvyn.doodle.restdoodle.dto.BeneficialOwnerResponse;
 import com.thaelvyn.doodle.restdoodle.dto.CompaniesResponse;
 import com.thaelvyn.doodle.restdoodle.dto.CompanyResponse;
-import com.thaelvyn.doodle.restdoodle.dto.Response;
 import com.thaelvyn.doodle.restdoodle.model.BeneficialOwner;
 import com.thaelvyn.doodle.restdoodle.model.Company;
 import com.thaelvyn.doodle.restdoodle.model.Employee;
