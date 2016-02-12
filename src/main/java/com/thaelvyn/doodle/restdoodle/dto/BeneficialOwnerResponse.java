@@ -10,6 +10,9 @@ public class BeneficialOwnerResponse extends Response {
 
     private BeneficialOwner beneficialOwner;
 
+    public BeneficialOwnerResponse() {
+    }
+
     public BeneficialOwnerResponse(final Integer httpStatus, final String message, final BeneficialOwner beneficialOwner) {
         super(httpStatus, message);
         this.beneficialOwner = beneficialOwner;

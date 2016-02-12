@@ -2,9 +2,11 @@ package com.thaelvyn.doodle.restdoodle.acceptance;
 
 import com.thaelvyn.doodle.restdoodle.Application;
 import com.thaelvyn.doodle.restdoodle.controller.CompanyController;
+import com.thaelvyn.doodle.restdoodle.dto.BeneficialOwnerResponse;
 import com.thaelvyn.doodle.restdoodle.dto.CompaniesResponse;
 import com.thaelvyn.doodle.restdoodle.dto.CompanyResponse;
 import com.thaelvyn.doodle.restdoodle.dto.Response;
+import com.thaelvyn.doodle.restdoodle.model.BeneficialOwner;
 import com.thaelvyn.doodle.restdoodle.model.Company;
 import com.thaelvyn.doodle.restdoodle.model.Employee;
 import com.thaelvyn.doodle.restdoodle.service.CompanyService;
@@ -43,6 +45,7 @@ public class CompaniesSteps {
     private List<Employee> employees;
     private CompaniesResponse companiesResponse;
     private CompanyResponse companyResponse;
+    private BeneficialOwner beneficialOwner;
     private HttpStatus httpStatus;
     private Company company;
     private UUID companyId;
@@ -64,8 +67,6 @@ public class CompaniesSteps {
         final Employee employee = new Employee("John", "Doe");
         employees = new ArrayList<>();
         employees.add(employee);
-        companyId = null;
-        httpStatus = null;
     }
 
     @Given("several companies created")
@@ -93,14 +94,18 @@ public class CompaniesSteps {
 
         if ("update".equals(type)){
             companyId = companyService.createCompany(company).getCompany().getCompanyId();
-            company = new Company("UPDATED", "add 1", "Camb", "UK", "c@c.com", "+44", employees);
+            if ("valid".equals(valid)) {
+                company = new Company("UPDATED", "add 1", "Camb", "UK", "c@c.com", "+44", employees);
+            } else {
+                company = new Company("UPDATED", "add 1", "Camb", "UK", "invalid", "+44", employees);
+            }
         }
 
     }
 
     @Given("a valid beneficial owner addition request")
     public void createBeneficialOwner() {
-
+        beneficialOwner = new BeneficialOwner("Julz", "Luc");
     }
 
     @When("a request to list companies is sent")
@@ -124,13 +129,17 @@ public class CompaniesSteps {
             ResponseEntity<CompanyResponse> rc = restTemplate.postForEntity(getUrl(CompanyController.BASE_URL), company, CompanyResponse.class);
             companyResponse = rc.getBody();
             httpStatus = rc.getStatusCode();
-        } else {
+        } else if ("update".equals(request)){
             ResponseEntity<CompanyResponse> rc = restTemplate.exchange(getUrl(CompanyController.BASE_URL + "/" + companyId),
                     HttpMethod.PUT,
                     new HttpEntity<>(company),
                     CompanyResponse.class
                     );
             companyResponse = rc.getBody();
+            httpStatus = rc.getStatusCode();
+        } else {
+            ResponseEntity<BeneficialOwnerResponse> rc = restTemplate.postForEntity(getUrl(CompanyController.BASE_URL + "/" + companyId + "/beneficial_owners"),
+                    beneficialOwner, BeneficialOwnerResponse.class);
             httpStatus = rc.getStatusCode();
         }
     }
